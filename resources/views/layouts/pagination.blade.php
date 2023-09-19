@@ -28,7 +28,4 @@
             <a href="">&laquo;</a>
         @endif
     </div>
-
-
-
 @endif

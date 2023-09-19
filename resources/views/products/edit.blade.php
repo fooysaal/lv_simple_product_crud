@@ -34,7 +34,7 @@
                         <label>Category</label>
                         <select  name="category">
 
-                            @foreach (json_decode('{"Smartphone":"Smartphone","SmartTV":"Smart TV", "Computer":"Computer"}', true) as $optionKey => $optionValue)
+                            @foreach (json_decode('{"Smartphone":"Smartphone","SmartTV":"Smart TV", "Computer":"Computer", "Gadgets":"Gadegts"}', true) as $optionKey => $optionValue)
                                 <option value="{{ $optionKey }}" {{ (null !== $product->category && $product->category == $optionKey) ? 'selected' : '' }}>
                                     {{ $optionValue }}
                                 </option>

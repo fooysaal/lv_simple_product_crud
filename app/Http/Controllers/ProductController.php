@@ -60,7 +60,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        return redirect(route('products.index'))->with('Success', 'Product Added Successfully');
+        return redirect(route('products.index'))->with('success', 'Product Added Successfully');
     }
 
     /**
@@ -117,7 +117,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::findOrFail($id);
-        $image_path = public_path()."/images/";
+        $image_path = public_path()."/img/";
         $image = $image_path . $product->image;
 
         if(file_exists($image)){

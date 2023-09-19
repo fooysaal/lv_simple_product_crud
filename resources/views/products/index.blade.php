@@ -7,12 +7,10 @@
             <h1>Products</h1>
             <a href="{{ route('products.create') }}">Add Products</a>
         </div>
-        @if ($message = Session::get('Success'))
-            <script>
-                Swal.fire(
-                    '{{ $message }}'
-                )
-            </script>
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Success!</strong> {{ session('success') }}
+            </div>
         @endif
         <div class="table">
             <form method="GET" action="{{ route('products.index') }}" accept-charset="UTF-8" role="search">
@@ -50,7 +48,7 @@
                             <form action="{{ route('products.destroy', $product->id) }}" method="POST">
                             @csrf
                             @method('delete')
-                                <button class="btn btn-danger" onclick="deleteConfirm(event)">
+                                <button class="btn btn-danger">
                                     <i class="far fa-trash-alt"></i>
                                 </button>
                             </form>
@@ -67,30 +65,4 @@
         </div>
     </section>
 </main>
-
-<script>
-
-    window.deleteConfirm = function (e){
-        e.preventDefault();
-        var form = e.target.form;
-
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-        if (result.isConfirmed) {
-
-            form.submit();
-
-        }
-        })
-    }
-
-</script>
-
 @endsection
